@@ -1,5 +1,5 @@
 <?php
-    $host= '127.0.0.1';
+    $host= 'localhost';
     $db = 'attandee_db';
     $user = 'root';
     $pass = '';
@@ -7,7 +7,9 @@
 
 //dsn= data source name,, terminology used in pdo connection.
 
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $dsn = "mysql:host=$host;
+    dbname=$db;
+    charset=$charset";
 
     try{
         $pdo = new PDO($dsn,$user,$pass);
