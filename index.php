@@ -2,7 +2,9 @@
 <?php 
 $title = 'index';
 require_once 'includes/header.php';
-require_once 'db/conn.php'
+require_once 'db/conn.php';
+//Get all attendees
+$results = $crud->getSpecialities();
  ?>
     <!--
         -First name
@@ -31,24 +33,21 @@ require_once 'db/conn.php'
         <div class="mb-3">
             <label for="speciality" class="form-label">Speciality</label>
             <select class="form-select" aria-label="Default select example" name="speciality">
-                <option selected>Select</option>
-                <option value="1">Software Engineer</option>
-                <option value="2">DevOps</option>
-                <option value="3">Network Administrator</option>
-                <option value="4">Others</option>
+             <?php while($r=$results->fetch(PDO::FETCH_ASSOC)){?>
+
+                <option value="<?php echo $r['speciality_id'];?>"><?php echo $r['name'];?></option>
+
+              <?php }?>  
+\                   
             </select>
         </div>        
         <div class="mb-3">
-            <label for="varchar" class="form-label">Phone number</label>
-            <input type="varchar" class="form-control" name="varchar">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="phone" class="form-control" name="phone">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
             <input type="email" class="form-control" name="email" placeholder="Enter your Email">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
         <div class="d-grid gap-2">
         <button type= "submit" name= "submit "class="btn btn-primary">Submit</button>
