@@ -3,26 +3,24 @@ $title = 'success';
 require_once 'includes/header.php';
 require_once 'db/conn.php';
 
-    if(isset($_POST['submit']))
-    {
-
+    if(!isset($_GET['submit'])){
         $fname = $_POST['firstname'];
         $lname = $_POST['lastname'];
         $dob = $_POST['dob'];
-        $email = $_POST['email'];
         $contact = $_POST['phone'];
+        $email = $_POST['email'];
         $speciality = $_POST['speciality'];
 
         //Call function to insert and track if success or not
         $isSuccess = $crud->insert($fname,$lname,$dob,$email,$contact,$speciality);
 
-        if($isSuccess == true)
+        if($isSuccess)
         {
-            echo '<h1 class ="test-center text-success"> You have been registered! </h1>';
+            echo "<h1 class ='test-center text-success'> You have been registered! </h1>";
         }
         else
         {
-            echo'<h1 class ="test-center text-danger"> Error !! </h1>';
+            echo"<h1 class ='text-center text-danger'> Error !! </h1>";
         }
     }
  ?>
@@ -65,19 +63,20 @@ require_once 'db/conn.php';
                 <?php echo "DOB: ". $_POST['dob']; ?>
             </p>
             <p class="card-number">
-                <?php echo"contact: ". $_POST['varchar']; ?>
+                <?php echo"contact: ". $_POST['phone']; ?>
             </p>
             <p class="card-text">
                 <?php echo"e-Mail: ". $_POST['email']; ?>
             </p>
         </div>
     </div>
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <?php require_once 'includes/footer.php'; ?>
