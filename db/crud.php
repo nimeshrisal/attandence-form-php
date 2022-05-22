@@ -71,19 +71,51 @@
     
         }
         public function getAttendees(){
-            $sql =" SELECT * FROM `attendees` a inner join specialities s on a.speciality_id = s.speciality_id ";
-            $result = $this->db->query($sql);
-            return $result;
+            try {
+                $sql =" SELECT * FROM `attendees` a inner join specialities s on a.speciality_id = s.speciality_id ";
+                $result = $this->db->query($sql);
+                return $result;
+            } 
+        catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            } 
         }
         public function getAttendeesDetails($id)
         {
-            $sql = "SELECT * FROM `attendees`a inner join specialities s on a.speciality_id = s.speciality_id 
-            WHERE id =:id";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(":id",$id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
+
+            try{
+                $sql = "SELECT * FROM `attendees`a inner join specialities s on a.speciality_id = s.speciality_id 
+                WHERE id =:id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(":id",$id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return $result;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+
+        }
+        }
+
+
+        public function deleteAttandee($id){
+
+            try {
+                $sql = "DELETE FROM `attendees` WHERE `id` = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(":id",$id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+
+
 
         }
         public function getSpecialities(){

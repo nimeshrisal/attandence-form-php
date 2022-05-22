@@ -1,6 +1,7 @@
 <?php 
 $title = 'records';
 require_once 'includes/header.php';
+require_once 'includes/auth_check.php';
 require_once 'db/conn.php';
 
 $results = $crud->getAttendees();
@@ -25,9 +26,8 @@ $results = $crud->getAttendees();
                 <td><?php echo $r['lastname']; ?> </td>
                 <td><?php echo $r['name']; ?> </td>
                 <td>
-                <a href ="view.php?id= <?php echo $r['id']; ?> " class="btn btn-primary">View</a>
-                <a href ="edit.php?id= <?php echo $r['id']; ?> " class="btn btn-warning">Edit</a>
-                </td>
+                <a href ="view.php?id= <?php echo $r['id']; ?> " class="btn btn-primary">View</a> 
+            </td>
             </tr>
 
         <?php }?>

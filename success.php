@@ -12,7 +12,7 @@ require_once 'db/conn.php';
         $speciality = $_POST['speciality'];
 
         //Call function to insert and track if success or not
-        $isSuccess = $crud->insert($fname,$lname,$dob,$email,$contact,$speciality);
+        $isSuccess = $crud->insert($fname,$lname,$dob,$contact,$email,$speciality);
 
         if($isSuccess)
         {

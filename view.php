@@ -27,8 +27,16 @@ require_once 'db/conn.php';
             <p class="card-text">
                 <?php echo"e-Mail: ". $result['email']; ?>
             </p>
+            <a href ="edit.php?id= <?php echo $result['id']; ?> " class="btn btn-warning">Edit</a>               
+            <a onclick = "return confirm ('Are you sure you want to delete the record.');"
+                    href ="delete.php?id= <?php echo $result['id']; ?> " class="btn btn-danger">Delete</a>   
+            <a href ="viewrecord.php" class= "btn btn-success">Go back</a>
+            
         </div>
     </div>
+
+
+
 
 
 <?php } ?>
