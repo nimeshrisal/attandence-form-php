@@ -44,9 +44,9 @@
         }
         public function editAttandee($id,$fname,$lname,$dob,$contact,$email,$speciality){
             try{
-            $sql = "UPDATE `attendees` SET `firstname`=:fname,
-            `lastname`=:lname,`dob`=:dob,`contact`=:contact,
-            `email`=:email,`speciality_id`=speciality WHERE id= :id";
+            $sql = "UPDATE `attendees` SET `firstname`= :fname,
+            `lastname`= :lname,`dob`= :dob,`contact`= :contact,
+            `email`= :email,`speciality_id`= :speciality WHERE id= :id";
 
              //prepare the sql statement for execution.
              $stmt = $this->db->prepare($sql);
@@ -58,7 +58,7 @@
              $stmt->bindparam(':dob',$dob);
              $stmt->bindparam(':contact',$contact);
              $stmt->bindparam(':email',$email);
-             $stmt->bindparam(':speciality_id',$speciality);
+             $stmt->bindparam(':speciality',$speciality);
 
              //execute the statement
              $stmt->execute();
